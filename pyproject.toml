@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "printeryuta"
+version = "1.0.0"
+description = "Autonomous Linux Printing Optimizer & Self-Healing Daemon for Ubuntu (Canon CAPT, CUPS & GDI)"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "Yuta", email = "tontonyuta@local" }
+]
+keywords = ["printing", "cups", "canon", "capt", "lbp3300", "lbp2900", "ubuntu", "linux-printing", "self-healing"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: System Administrators",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Printing",
+    "Topic :: System :: Hardware :: Hardware Drivers",
+]
+dependencies = [
+    "click>=8.0.0",
+    "rich>=12.0.0",
+]
+
+[project.scripts]
+printeryuta = "printeryuta.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["printeryuta*"]

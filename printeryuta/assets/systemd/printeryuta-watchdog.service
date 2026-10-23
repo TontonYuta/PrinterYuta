@@ -1,0 +1,15 @@
+[Unit]
+Description=PrinterYuta Printing Stack Supervisor & Watchdog
+After=network.target cups.service
+Wants=cups.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 -m printeryuta.cli daemon --interval 10
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

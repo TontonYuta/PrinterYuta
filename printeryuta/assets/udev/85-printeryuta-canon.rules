@@ -1,0 +1,15 @@
+# ==========================================================
+# PrinterYuta - Autonomous Udev Hardware Guard for Canon CAPT
+# ==========================================================
+
+# Create persistent device symlink for Canon LBP3300
+KERNEL=="lp[0-9]*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="267e", SYMLINK+="canonLBP3300", TAG+="systemd", ENV{SYSTEMD_WANTS}+="printeryuta-hotplug.service"
+
+# Create persistent device symlink for Canon LBP2900
+KERNEL=="lp[0-9]*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="2676", SYMLINK+="canonLBP2900", TAG+="systemd", ENV{SYSTEMD_WANTS}+="printeryuta-hotplug.service"
+
+# Create persistent device symlink for Canon LBP3000
+KERNEL=="lp[0-9]*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="266a", SYMLINK+="canonLBP3000", TAG+="systemd", ENV{SYSTEMD_WANTS}+="printeryuta-hotplug.service"
+
+# Fallback wildcard for any Canon CAPT USB device addition
+ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="04a9", TAG+="systemd", ENV{SYSTEMD_WANTS}+="printeryuta-hotplug.service"
